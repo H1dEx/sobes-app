@@ -16,7 +16,6 @@
 
         <v-main>
             <router-view></router-view>
-            <button @click="Myf">tipo test button</button>
         </v-main>
 
     </v-app>
@@ -25,7 +24,6 @@
 <script>
 import Drawer from "@/components/Drawer";
 import AppBar from "@/components/AppBar";
-import axios from "axios";
 import SnackBar from "@/components/SnackBar";
 
 export default {
@@ -51,23 +49,23 @@ export default {
                         url: '/login'
                     }
                 ]
-        return [
-            {
-                title: 'List',
-                icon: 'mdi-view-list',
-                url: '/'
-            },
-            {
-                title: 'Create',
-                icon: 'mdi-plus',
-                url: '/add'
-            },
-            {
-                title: 'Logout',
-                icon: 'mdi-login',
-                url: '/logout'
-            }
-        ]
+            return [
+                {
+                    title: 'List',
+                    icon: 'mdi-view-list',
+                    url: '/'
+                },
+                {
+                    title: 'Create',
+                    icon: 'mdi-plus',
+                    url: '/add'
+                },
+                {
+                    title: 'Logout',
+                    icon: 'mdi-login',
+                    url: '/logout'
+                }
+            ]
         }
     },
 
@@ -80,25 +78,10 @@ export default {
             this.isShowedDrawer = !this.isShowedDrawer
         },
 
-        async Myf() {
-            const instance = axios.create({
-                baseURL: 'http://junback.local/api',
-                withCredentials: true
-            });
-
-            // await instance.get('/tasks').then(response => response.data).then(console.log)
-            // await instance.get('/users').then(response => response.data).then(console.log)
-
-            // await instance.post('/login', {login: "Oleg", password: "qwerty"}).then(console.log)
-
-            await instance.get('/logout').then(response => response.data).then(console.log)
-
-
-        }
     },
 
     created() {
-        if(!this.isLogged)
+        if (!this.isLogged)
             this.$router.push('/login')
     }
 };

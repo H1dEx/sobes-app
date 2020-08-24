@@ -16,9 +16,8 @@ export default {
         setCurrentPage(state, number) {
             state.currentPage = number
         },
-        deleteTask(state, id) {
-            state.tasks = state.tasks.map(el=>el)
-            console.log(id)
+        deleteTask(state, task) {
+            state.tasks = state.tasks.filter(el => el.id !== task.id)
         },
         toggleImportant(state, task) {
             state.tasks = state.tasks.map(el => {
@@ -38,8 +37,8 @@ export default {
 
     actions: {
         async deleteTask({commit}, id) {
-            const response = await listAPI.deleteTask(id);
-            console.log(response)
+            // const response = await listAPI.deleteTask(id);
+            // console.log(response)
             commit('deleteTask', id)
         },
         toggleImportant({commit}, task) {
